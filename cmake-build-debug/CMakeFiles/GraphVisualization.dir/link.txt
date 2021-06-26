@@ -1,0 +1,3 @@
+C:\Users\akbul\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7442.42\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\GraphVisualization.dir/objects.a
+C:\MinGW_7.3.0\bin\ar.exe cr CMakeFiles\GraphVisualization.dir/objects.a @CMakeFiles\GraphVisualization.dir\objects1.rsp
+C:\MinGW_7.3.0\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\GraphVisualization.dir/objects.a -Wl,--no-whole-archive -o GraphVisualization.exe -Wl,--out-implib,libGraphVisualization.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\GraphVisualization.dir\linklibs.rsp
