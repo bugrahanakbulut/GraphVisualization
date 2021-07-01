@@ -685,8 +685,8 @@ iostream
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Utils.h
 ../../Utils/Constants.h
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Constants.h
-../LinkedList/LinkedList.h
-C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/LinkedList/LinkedList.h
+../Queue/Queue.h
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Queue/Queue.h
 
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph.h
 cmath
@@ -701,6 +701,12 @@ LinkedListNode.h
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/LinkedList/LinkedListNode.h
 
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/LinkedList/LinkedListNode.h
+
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Queue/Queue.h
+../LinkedList/LinkedList.h
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/LinkedList/LinkedList.h
+iostream
+-
 
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Constants.h
 

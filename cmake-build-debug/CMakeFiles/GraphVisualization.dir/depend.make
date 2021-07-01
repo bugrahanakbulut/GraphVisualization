@@ -79,6 +79,7 @@ CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Graph/
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Graph/VisualGraph.h
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/LinkedList/LinkedList.h
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/LinkedList/LinkedListNode.h
+CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Queue/Queue.h
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/Utils/Constants.h
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/Utils/Resources.h
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/Utils/Utils.h

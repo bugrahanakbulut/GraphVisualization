@@ -14,7 +14,7 @@ int main()
 
     VisualGraph graph(10, 1500, 800);
 
-    graph.DFS(1, 0);
+    graph.BFS(1, 0);
 
     RenderWindow window(VideoMode(1600, 900), "Graph Visualization");
 

@@ -3,7 +3,9 @@
 
 #include "../../Utils/Utils.h"
 #include "../../Utils/Constants.h"
-#include "../LinkedList/LinkedList.h"
+#include "../Queue/Queue.h"
+// #include "../LinkedList/LinkedList.h"
+
 
 using namespace std;
 
@@ -65,6 +67,8 @@ class Graph
         LinkedList<T2> * GetAdjLinkList() { return _adjLinkList; }
 
         bool DFS(int startingIndex, int targetIndex);
+
+        bool BFS(int startingIndex, int targetIndex);
 
 
     protected:
@@ -151,5 +155,37 @@ bool Graph<T1, T2>::DFS(int startingIndex, int targetIndex)
             nodeStack->PushFront(index);
         }
     }
+    return false;
+}
+
+template<class T1, class T2>
+bool Graph<T1, T2>::BFS(int startingIndex, int targetIndex)
+{
+    Queue<int> nodeQueue;
+
+    bool isVisited[_nodeCount];
+
+    for (int i = 0 ; i < _nodeCount; i++)
+    {
+        isVisited[i] = false;
+    }
+
+    nodeQueue.Enqueue(startingIndex);
+
+    while (!nodeQueue.IsEmpty())
+    {
+        int curIndex = nodeQueue.Dequeue();
+
+        for (int i = 0; i < _adjLinkList[curIndex].Size(); i++)
+        {
+            if (!isVisited[_adjLinkList[curIndex].ValueAt(i).GetTargetNode().GetIndex()])
+            {
+                isVisited[_adjLinkList[curIndex].ValueAt(i).GetTargetNode().GetIndex()] = true;
+
+                nodeQueue.Enqueue(_adjLinkList[curIndex].ValueAt(i).GetTargetNode().GetIndex());
+            }
+        }
+    }
+
     return false;
 }

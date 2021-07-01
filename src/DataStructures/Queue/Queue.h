@@ -16,6 +16,8 @@ class Queue
         void Enqueue(T value);
         T Dequeue();
         void PrintQueue();
+        bool IsEmpty() { return _list->IsEmpty(); }
+
 
     private:
         LinkedList<T> * _list;
