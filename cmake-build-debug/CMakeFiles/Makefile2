@@ -92,12 +92,12 @@ clean: CMakeFiles/GraphVisualization.dir/clean
 CMakeFiles/GraphVisualization.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\GraphVisualization.dir\build.make CMakeFiles/GraphVisualization.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\GraphVisualization.dir\build.make CMakeFiles/GraphVisualization.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\akbul\Desktop\workspace\Cpp\GraphVisualization\cmake-build-debug\CMakeFiles --progress-num=1,2,3 "Built target GraphVisualization"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\akbul\Desktop\workspace\Cpp\GraphVisualization\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target GraphVisualization"
 .PHONY : CMakeFiles/GraphVisualization.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/GraphVisualization.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\akbul\Desktop\workspace\Cpp\GraphVisualization\cmake-build-debug\CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\akbul\Desktop\workspace\Cpp\GraphVisualization\cmake-build-debug\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/GraphVisualization.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\akbul\Desktop\workspace\Cpp\GraphVisualization\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/GraphVisualization.dir/rule

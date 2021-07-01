@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/GraphVisualization.dir/src/DataStructures/Graph/Graph.cpp.obj"
   "CMakeFiles/GraphVisualization.dir/src/main.cpp.obj"
   "GraphVisualization.exe"
   "GraphVisualization.exe.manifest"

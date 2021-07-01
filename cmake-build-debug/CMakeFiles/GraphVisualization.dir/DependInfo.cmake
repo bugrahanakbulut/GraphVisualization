@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/Graph.cpp" "C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/cmake-build-debug/CMakeFiles/GraphVisualization.dir/src/DataStructures/Graph/Graph.cpp.obj"
   "C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/main.cpp" "C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/cmake-build-debug/CMakeFiles/GraphVisualization.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

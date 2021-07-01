@@ -86,16 +86,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/Graph.cpp">
+		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/Graph.h">
 			<Option target="GraphVisualization"/>
 		</Unit>
-		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/Graph.h">
+		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph.h">
 			<Option target="GraphVisualization"/>
 		</Unit>
 		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Constants.h">
 			<Option target="GraphVisualization"/>
 		</Unit>
-		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/GraphVisualizer.h">
+		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Resources.h">
 			<Option target="GraphVisualization"/>
 		</Unit>
 		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Utils.h">

@@ -141,33 +141,6 @@ GraphVisualization/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\GraphVisualization.dir\build.make CMakeFiles/GraphVisualization.dir/build
 .PHONY : GraphVisualization/fast
 
-src/DataStructures/Graph/Graph.obj: src/DataStructures/Graph/Graph.cpp.obj
-
-.PHONY : src/DataStructures/Graph/Graph.obj
-
-# target to build an object file
-src/DataStructures/Graph/Graph.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GraphVisualization.dir\build.make CMakeFiles/GraphVisualization.dir/src/DataStructures/Graph/Graph.cpp.obj
-.PHONY : src/DataStructures/Graph/Graph.cpp.obj
-
-src/DataStructures/Graph/Graph.i: src/DataStructures/Graph/Graph.cpp.i
-
-.PHONY : src/DataStructures/Graph/Graph.i
-
-# target to preprocess a source file
-src/DataStructures/Graph/Graph.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GraphVisualization.dir\build.make CMakeFiles/GraphVisualization.dir/src/DataStructures/Graph/Graph.cpp.i
-.PHONY : src/DataStructures/Graph/Graph.cpp.i
-
-src/DataStructures/Graph/Graph.s: src/DataStructures/Graph/Graph.cpp.s
-
-.PHONY : src/DataStructures/Graph/Graph.s
-
-# target to generate assembly for a file
-src/DataStructures/Graph/Graph.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\GraphVisualization.dir\build.make CMakeFiles/GraphVisualization.dir/src/DataStructures/Graph/Graph.cpp.s
-.PHONY : src/DataStructures/Graph/Graph.cpp.s
-
 src/main.obj: src/main.cpp.obj
 
 .PHONY : src/main.obj
@@ -204,9 +177,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... GraphVisualization
-	@echo ... src/DataStructures/Graph/Graph.obj
-	@echo ... src/DataStructures/Graph/Graph.i
-	@echo ... src/DataStructures/Graph/Graph.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

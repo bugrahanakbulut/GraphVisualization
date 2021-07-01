@@ -1,17 +1,24 @@
-#include "SFML/Graphics.hpp"
-#include "DataStructures/Graph/Graph.h"
-#include "Utils/GraphVisualizer.h"
+#include "Utils/Resources.h"
 
-using namespace sf;
+#include "DataStructures/Graph/Graph.h"
+#include "DataStructures/Graph/VisualGraph.h"
+
+// using namespace sf;
 using namespace std;
 
 int main()
 {
+    Font font;
+
+    font.loadFromFile("../Resources/Roboto.ttf");
+
+    VisualGraph graph(10, 1500, 800);
+
+    graph.DFS(1, 0);
+
     RenderWindow window(VideoMode(1600, 900), "Graph Visualization");
 
     Event event;
-
-    GraphVisualizer g(100, 800,  1500);
 
     while (window.isOpen())
     {
@@ -29,27 +36,25 @@ int main()
 
         window.clear();
 
-        for (int i = 0; i < g.GetNodeCount(); i++)
+        for (int i = 0; i < graph.GetNodeCount(); i++)
         {
-            CircleShape circle;
-            circle.setRadius(5);
-            circle.setPosition(Vector2f(g.GetVisualNodes()[i].GetX(), g.GetVisualNodes()[i].GetY()));
-            circle.setFillColor(Color(255, 0, 0));
+            window.draw(graph.GetNodes()[i].GetShape());
 
-            window.draw(circle);
+            Text t;
+            t.setFont(font);
+            t.setCharacterSize(Constants::NODE_INDEX_CHAR_SIZE);
+            t.setFillColor(Constants::GET_NODE_INDEX_TEXT_COLOR());
+            t.setString(to_string(graph.GetNodes()[i].GetIndex()));
+            t.setPosition(graph.GetNodes()[i].GetPosition());
+            t.setOrigin(Constants::NODE_RADIUS, Constants::NODE_RADIUS);
+            window.draw(t);
+        }
 
-            for (int j = 0; j < g.GetOutDegrees()[i]; j++)
+        for (int i = 0; i < graph.GetNodeCount(); i++)
+        {
+            for (int j = 0; j < graph.GetNodes()[i].GetOutDegree(); j++)
             {
-                Vector2f source(g.GetVisualNodes()[i].GetX(), g.GetVisualNodes()[i].GetY());
-                Vector2f destination(g.GetAdjacencyList()[i][j].GetX(), g.GetAdjacencyList()[i][j].GetY());
-
-                Vertex line[] =
-                {
-                    Vertex(source),
-                    Vertex(destination)
-                };
-
-                window.draw(line, 2, Lines);
+                window.draw(graph.GetAdjLinkList()[i].ValueAt(j).GetLine(), 2, Lines);
             }
         }
 
