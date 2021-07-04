@@ -36,20 +36,20 @@ class GraphEdge
     public:
         GraphEdge() { }
 
-        GraphEdge(T sourceNode, T targetNode, int weight = 1)
+        GraphEdge(T * sourceNode, T * targetNode, int weight = 1)
         {
             _sourceNode = sourceNode;
             _targetNode = targetNode;
             _weight = weight;
         }
 
-        T GetSourceNode() { return _sourceNode; }
-        T GetTargetNode() { return _targetNode; }
+        T GetSourceNode() { return * _sourceNode; }
+        T GetTargetNode() { return * _targetNode; }
         int GetWeight() { return _weight; }
 
     protected:
-        T _sourceNode;
-        T _targetNode;
+        T * _sourceNode;
+        T * _targetNode;
         int _weight;
 };
 
@@ -81,33 +81,7 @@ class Graph
 template<class T1, class T2>
 Graph<T1, T2>::Graph(int nodeCount)
 {
-    /*_nodeCount = nodeCount;
-    _nodes = (T1 *) calloc(sizeof(T1), nodeCount);
-    _adjacencyList = (T2 **) calloc(sizeof(T2 *), nodeCount);
 
-    // init adjacencyList randomly
-    for (int i = 0; i < nodeCount; i++)
-    {
-        _nodes[i] = T1(i, 0);
-
-        _adjacencyList[i] = (T2 *) calloc(sizeof(T2), 1);
-
-        for (int j = 0; j < nodeCount; j++)
-        {
-            if (i == j) { continue; }
-
-            float dice = Utils::GetRandomFloat();
-
-            if (dice < Constants::DEFAULT_ADD_ADJACENCY)
-            {
-                _nodes[i].SetOutDegree(_nodes[i].GetOutDegree() + 1);
-
-                _adjacencyList[i] = (T2 *) realloc(_adjacencyList[i], sizeof(T2) * _nodes[i].GetOutDegree());
-
-                _adjacencyList[i][_nodes[i].GetOutDegree() - 1] = T2(_nodes[i], _nodes[j]);
-            }
-        }
-    }*/
 }
 
 template<class T1, class T2>
@@ -141,8 +115,6 @@ bool Graph<T1, T2>::DFS(int startingIndex, int targetIndex)
 
         for (int i = 0; i < _nodes[curIndex].GetOutDegree(); i++)
         {
-            _adjLinkList[curIndex].ValueAt(i).SetColor(Color::Green);
-
             int index = (_adjLinkList[curIndex]).ValueAt(i).GetTargetNode().GetIndex();
 
             traversedNodes->PushBack((_adjLinkList[curIndex]).ValueAt(i));

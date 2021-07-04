@@ -14,7 +14,7 @@ int main()
 
     VisualGraph graph(10, 1500, 800);
 
-    graph.BFS(1, 0);
+    graph.VisualDFS();
 
     RenderWindow window(VideoMode(1600, 900), "Graph Visualization");
 
@@ -38,6 +38,16 @@ int main()
 
         for (int i = 0; i < graph.GetNodeCount(); i++)
         {
+            for (int j = 0; j < graph.GetNodes()[i].GetOutDegree(); j++)
+            {
+                window.draw(graph.GetAdjLinkList()[i].ValueAt(j).GetLine(), 2, Lines);
+
+                window.draw(graph.GetAdjLinkList()[i].ValueAt(j).GetShape());
+            }
+        }
+
+        for (int i = 0; i < graph.GetNodeCount(); i++)
+        {
             window.draw(graph.GetNodes()[i].GetShape());
 
             Text t;
@@ -48,14 +58,6 @@ int main()
             t.setPosition(graph.GetNodes()[i].GetPosition());
             t.setOrigin(Constants::NODE_RADIUS, Constants::NODE_RADIUS);
             window.draw(t);
-        }
-
-        for (int i = 0; i < graph.GetNodeCount(); i++)
-        {
-            for (int j = 0; j < graph.GetNodes()[i].GetOutDegree(); j++)
-            {
-                window.draw(graph.GetAdjLinkList()[i].ValueAt(j).GetLine(), 2, Lines);
-            }
         }
 
         window.display();

@@ -122,13 +122,27 @@ void LinkedList<T>::PushBack(T value)
 template<typename T>
 T LinkedList<T>::PopBack()
 {
+    if (_size == 0)
+    {
+        throw runtime_error("List is already empty.");
+    }
+
     T returnValue = _tail->Value;
 
-    LinkedListNode<T> * newTail = GetNode(_size - 2);
+    if (_size > 1)
+    {
+        LinkedListNode<T> *newTail = GetNode(_size - 2);
 
-    newTail->Next = nullptr;
+        newTail->Next = nullptr;
 
-    _tail = newTail;
+        _tail = newTail;
+    }
+    else
+    {
+        _head = nullptr;
+        _tail = nullptr;
+    }
+
 
     _size--;
 

@@ -19,7 +19,7 @@ class Constants
 
         static Color GET_NODE_INDEX_TEXT_COLOR()
         {
-            return Color::Green;
+            return Color::White;
         }
 
         static Color GET_EDGE_COLOR()
