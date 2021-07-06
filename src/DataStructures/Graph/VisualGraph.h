@@ -109,8 +109,6 @@ class VisualGraphEdge : public GraphEdge<VisualGraphNode>
 
             _directionArrow.setRotation(angle);
             _directionArrow.setFillColor(_targetNode->GetColor());
-
-            float len = sqrt(pow(dir.x, 2) + pow(dir.y, 2));
         }
 
 };
@@ -198,7 +196,7 @@ void VisualGraph::VisualDFS()
 
     while (!nodeStack->IsEmpty())
     {
-        int index = nodeStack->PopBack();
+        int index = nodeStack->PopFront();
 
         isVisited[index] = true;
 
@@ -207,7 +205,7 @@ void VisualGraph::VisualDFS()
 
         _nodes[index].SetColor(_visualColorPalette[levels[index]]);
 
-        cout << "Node Id :" << index << " Level :" << levels[index] << "\n";
+        // cout << "Node Id :" << index << " Level :" << levels[index] << "\n";
 
         for (int i = 0; i < _adjLinkList[index].Size(); i++)
         {
@@ -218,11 +216,14 @@ void VisualGraph::VisualDFS()
                 parents[targetNode] = index;
 
                 nodeStack->PushFront(targetNode);
-
-                // cout << targetNode << " pushed into stack.\n";
             }
         }
     }
+
+    /*for (int i = 0; i < _nodeCount; i++)
+    {
+        cout << "Node Id :" << i << " Level :" << levels[i] << " Parent : " << parents[i] << "\n";
+    }*/
 }
 
 void VisualGraph::InitColorPalette()
