@@ -77,7 +77,11 @@ CMakeFiles/GraphVisualization.dir/src/main.cpp.obj
  C:/SFML/include/SFML/Window/WindowHandle.hpp
  C:/SFML/include/SFML/Window/WindowStyle.hpp
  C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/Graph.h
- C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph.h
+ C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/GraphEdge.h
+ C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/GraphNode.h
+ C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraph.h
+ C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraphEdge.h
+ C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraphNode.h
  C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/LinkedList/LinkedList.h
  C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/LinkedList/LinkedListNode.h
  C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Queue/Queue.h

@@ -89,7 +89,19 @@
 		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/Graph.h">
 			<Option target="GraphVisualization"/>
 		</Unit>
-		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph.h">
+		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/GraphEdge.h">
+			<Option target="GraphVisualization"/>
+		</Unit>
+		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/GraphNode.h">
+			<Option target="GraphVisualization"/>
+		</Unit>
+		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraph.h">
+			<Option target="GraphVisualization"/>
+		</Unit>
+		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraphEdge.h">
+			<Option target="GraphVisualization"/>
+		</Unit>
+		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraphNode.h">
 			<Option target="GraphVisualization"/>
 		</Unit>
 		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Constants.h">

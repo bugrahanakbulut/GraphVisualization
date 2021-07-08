@@ -687,10 +687,30 @@ C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Utils.h
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Constants.h
 ../Queue/Queue.h
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Queue/Queue.h
+GraphNode.h
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/GraphNode.h
+GraphEdge.h
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/GraphEdge.h
 
-C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph.h
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/GraphEdge.h
+
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/GraphNode.h
+
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraph.h
 cmath
 -
+VisualGraphNode.h
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraphNode.h
+VisualGraphEdge.h
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraphEdge.h
+windows.h
+-
+pthread.h
+-
+
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraphEdge.h
+
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraphNode.h
 
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/LinkedList/LinkedList.h
 stdexcept
@@ -723,10 +743,12 @@ SFML/Graphics.hpp
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/SFML/Graphics.hpp
 
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/main.cpp
+thread
+-
 Utils/Resources.h
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Resources.h
 DataStructures/Graph/Graph.h
 C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/Graph.h
-DataStructures/Graph/VisualGraph.h
-C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph.h
+DataStructures/Graph/VisualGraph/VisualGraph.h
+C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraph.h
 

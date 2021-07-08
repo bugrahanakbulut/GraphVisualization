@@ -76,7 +76,11 @@ CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: C:/SFML/include/SFML/Window/
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: C:/SFML/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: C:/SFML/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Graph/Graph.h
-CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Graph/VisualGraph.h
+CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Graph/GraphEdge.h
+CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Graph/GraphNode.h
+CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Graph/VisualGraph/VisualGraph.h
+CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Graph/VisualGraph/VisualGraphEdge.h
+CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Graph/VisualGraph/VisualGraphNode.h
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/LinkedList/LinkedList.h
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/LinkedList/LinkedListNode.h
 CMakeFiles/GraphVisualization.dir/src/main.cpp.obj: ../src/DataStructures/Queue/Queue.h

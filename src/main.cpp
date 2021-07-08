@@ -1,10 +1,16 @@
-#include "Utils/Resources.h"
+#include <thread>
 
+#include "Utils/Resources.h"
 #include "DataStructures/Graph/Graph.h"
-#include "DataStructures/Graph/VisualGraph.h"
+#include "DataStructures/Graph/VisualGraph/VisualGraph.h"
 
 // using namespace sf;
 using namespace std;
+
+void threadxx(VisualGraph g)
+{
+    g.VisualDFS();
+}
 
 int main()
 {
@@ -14,7 +20,7 @@ int main()
 
     VisualGraph graph(10, 1500, 800);
 
-    graph.VisualDFS();
+    std::thread t (threadxx, graph);
 
     RenderWindow window(VideoMode(1600, 900), "Graph Visualization");
 

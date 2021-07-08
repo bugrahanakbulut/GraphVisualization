@@ -4,54 +4,10 @@
 #include "../../Utils/Utils.h"
 #include "../../Utils/Constants.h"
 #include "../Queue/Queue.h"
-// #include "../LinkedList/LinkedList.h"
-
+#include "GraphNode.h"
+#include "GraphEdge.h"
 
 using namespace std;
-
-class GraphNode
-{
-    public:
-        GraphNode() { }
-
-        GraphNode(int index, int outDegree)
-        {
-            _index = index;
-            _outDegree = outDegree;
-        }
-
-        int GetIndex() { return _index; }
-
-        int GetOutDegree() { return _outDegree; }
-        void SetOutDegree(int val) { _outDegree = val; }
-
-    protected :
-        int _index;
-        int _outDegree;
-};
-
-template<class T = GraphNode>
-class GraphEdge
-{
-    public:
-        GraphEdge() { }
-
-        GraphEdge(T * sourceNode, T * targetNode, int weight = 1)
-        {
-            _sourceNode = sourceNode;
-            _targetNode = targetNode;
-            _weight = weight;
-        }
-
-        T GetSourceNode() { return * _sourceNode; }
-        T GetTargetNode() { return * _targetNode; }
-        int GetWeight() { return _weight; }
-
-    protected:
-        T * _sourceNode;
-        T * _targetNode;
-        int _weight;
-};
 
 template<class T1 = GraphNode, class T2 = GraphEdge<GraphNode>>
 class Graph
@@ -66,7 +22,7 @@ class Graph
 
         LinkedList<T2> * GetAdjLinkList() { return _adjLinkList; }
 
-        bool DFS(int startingIndex, int targetIndex);
+        LinkedList<T2> DFS();
 
         bool BFS(int startingIndex, int targetIndex);
 
@@ -81,53 +37,55 @@ class Graph
 template<class T1, class T2>
 Graph<T1, T2>::Graph(int nodeCount)
 {
-
+    _nodeCount = nodeCount;
 }
 
 template<class T1, class T2>
-bool Graph<T1, T2>::DFS(int startingIndex, int targetIndex)
+LinkedList<T2> Graph<T1, T2>::DFS()
 {
-    LinkedList<int> * nodeStack = new LinkedList<int>;
-
-    LinkedList<T2> * traversedNodes = new LinkedList<T2>;
-
+    int parents[_nodeCount];
     bool isVisited[_nodeCount];
+    LinkedList<int> * nodeStack = new LinkedList<int>();
+    LinkedList<T2> traversalOrder = LinkedList<T2>();
+
+    parents[0] = -1;
 
     for (int i = 0; i < _nodeCount; i++)
     {
-        isVisited[i] = false;
-    }
+        nodeStack->PushFront(i);
 
-    nodeStack->PushFront(startingIndex);
-
-    while (!nodeStack->IsEmpty())
-    {
-        int curIndex = nodeStack->ValueAt(0);
-
-        nodeStack->DeleteAt(0);
-
-        if (isVisited[curIndex])
+        while (!nodeStack->IsEmpty())
         {
-            continue;
-        }
+            int curIndex = nodeStack->PopFront();
 
-        isVisited[curIndex] = true;
-
-        for (int i = 0; i < _nodes[curIndex].GetOutDegree(); i++)
-        {
-            int index = (_adjLinkList[curIndex]).ValueAt(i).GetTargetNode().GetIndex();
-
-            traversedNodes->PushBack((_adjLinkList[curIndex]).ValueAt(i));
-
-            if (index == targetIndex)
+            if (!isVisited[curIndex])
             {
-                return true;
-            }
+                int parent = parents[curIndex];
+                if (parent != -1)
+                {
+                    for (int k = 0; k < _nodes[parent].GetOutDegree(); k++)
+                    {
+                        if (_adjLinkList[parent].ValueAt(k).GetTargetNode().GetIndex() == curIndex)
+                        {
+                            traversalOrder.PushBack(_adjLinkList[parent].ValueAt(k));
+                        }
+                    }
+                }
 
-            nodeStack->PushFront(index);
+                isVisited[curIndex] = true;
+
+                for (int j = 0; j < _nodes[curIndex].GetOutDegree(); j++)
+                {
+                    int targetIndex = _adjLinkList[curIndex].ValueAt(j).GetTargetNode().GetIndex();
+
+                    parents[targetIndex] = curIndex;
+
+                    nodeStack->PushFront(targetIndex);
+                }
+            }
         }
     }
-    return false;
+    return traversalOrder;
 }
 
 template<class T1, class T2>
