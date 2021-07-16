@@ -28,6 +28,7 @@ class LinkedList
         T DeleteAt(int index);
         void Reverse();
         void PrintList();
+        void Clear();
 
     private:
         int _size;
@@ -289,4 +290,9 @@ LinkedListNode<T> * LinkedList<T>::GetNode(int index)
     return tmp;
 }
 
-
+template<typename T>
+void LinkedList<T>::Clear()
+{
+    _size = 0;
+    _head = _tail = nullptr;
+}

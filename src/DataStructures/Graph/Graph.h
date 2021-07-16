@@ -28,7 +28,7 @@ class Graph
 
         LinkedList<T2 *> DFS();
 
-        bool BFS(int startingIndex, int targetIndex);
+        LinkedList<T2 *> BFS();
 
 
     protected:
@@ -94,9 +94,11 @@ LinkedList<T2 *> Graph<T1, T2>::DFS()
 }
 
 template<class T1, class T2>
-bool Graph<T1, T2>::BFS(int startingIndex, int targetIndex)
+LinkedList<T2 *> Graph<T1, T2>::BFS()
 {
     Queue<int> nodeQueue;
+
+    LinkedList<T2 *> traverseOrder = LinkedList<T2 *>();
 
     bool isVisited[_nodeCount];
 
@@ -105,7 +107,9 @@ bool Graph<T1, T2>::BFS(int startingIndex, int targetIndex)
         isVisited[i] = false;
     }
 
-    nodeQueue.Enqueue(startingIndex);
+    isVisited[0] = true;
+
+    nodeQueue.Enqueue(0);
 
     while (!nodeQueue.IsEmpty())
     {
@@ -113,14 +117,16 @@ bool Graph<T1, T2>::BFS(int startingIndex, int targetIndex)
 
         for (int i = 0; i < _adjLinkList[curIndex].Size(); i++)
         {
-            if (!isVisited[_adjLinkList[curIndex].ValueAt(i).GetTargetNode().GetIndex()])
+            if (!isVisited[_adjLinkList[curIndex].ValueAt(i)->GetTargetNode()->GetIndex()])
             {
-                isVisited[_adjLinkList[curIndex].ValueAt(i).GetTargetNode().GetIndex()] = true;
+                isVisited[_adjLinkList[curIndex].ValueAt(i)->GetTargetNode()->GetIndex()] = true;
 
-                nodeQueue.Enqueue(_adjLinkList[curIndex].ValueAt(i).GetTargetNode().GetIndex());
+                nodeQueue.Enqueue(_adjLinkList[curIndex].ValueAt(i)->GetTargetNode()->GetIndex());
+
+                traverseOrder.PushBack(_adjLinkList[curIndex].ValueAt(i));
             }
         }
     }
 
-    return false;
+    return traverseOrder;
 }

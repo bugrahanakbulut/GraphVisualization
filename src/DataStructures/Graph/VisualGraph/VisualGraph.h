@@ -12,6 +12,8 @@ class VisualGraph : public Graph<VisualGraphNode, VisualGraphEdge>
 
         void VisualDFS();
 
+        void VisualBFS();
+
         LinkedList<VisualGraphEdge> * TraverseOrder;
 
     private:
@@ -71,6 +73,8 @@ VisualGraph::VisualGraph(int nodeCount, int windowWidth, int windowHeight)
 
 void VisualGraph::VisualDFS()
 {
+    TraverseOrder->Clear();
+
     Sleep(500);
 
     LinkedList<VisualGraphEdge *> traversalOrder = DFS();
@@ -80,7 +84,6 @@ void VisualGraph::VisualDFS()
         traversalOrder.ValueAt(i)->SetColor(Color::Red);
 
         cout << "Source Node : " << traversalOrder.ValueAt(i)->GetSourceNode()->GetIndex() << " ->" <<
-
         "Target Node : " << traversalOrder.ValueAt(i)->GetTargetNode()->GetIndex() << "\n";
 
         TraverseOrder->PushBack(*(traversalOrder.ValueAt(i)));
@@ -89,6 +92,26 @@ void VisualGraph::VisualDFS()
     }
 }
 
+void VisualGraph::VisualBFS()
+{
+    TraverseOrder->Clear();
+
+    Sleep(500);
+
+    LinkedList<VisualGraphEdge *> traversalOrder = BFS();
+
+    for (int i = 0; i < traversalOrder.Size(); i++)
+    {
+        traversalOrder.ValueAt(i)->SetColor(Color::Red);
+
+        cout << "Source Node : " << traversalOrder.ValueAt(i)->GetSourceNode()->GetIndex() << " ->" <<
+         "Target Node : " << traversalOrder.ValueAt(i)->GetTargetNode()->GetIndex() << "\n";
+
+        TraverseOrder->PushBack(*(traversalOrder.ValueAt(i)));
+
+        Sleep(500);
+    }
+}
 
 void VisualGraph::InitColorPalette()
 {

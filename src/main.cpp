@@ -8,7 +8,7 @@ using namespace std;
 
 void threadxx(VisualGraph g)
 {
-    g.VisualDFS();
+    g.VisualBFS();
 }
 
 int main()
