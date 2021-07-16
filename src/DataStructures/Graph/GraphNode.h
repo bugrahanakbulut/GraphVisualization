@@ -1,7 +1,10 @@
 class GraphNode
 {
 public:
-    GraphNode() { }
+    GraphNode()
+    {
+
+    }
 
     GraphNode(int index, int outDegree)
     {
@@ -10,7 +13,6 @@ public:
     }
 
     int GetIndex() { return _index; }
-
     int GetOutDegree() { return _outDegree; }
     void SetOutDegree(int val) { _outDegree = val; }
 

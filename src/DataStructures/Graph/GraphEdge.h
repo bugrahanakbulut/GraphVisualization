@@ -11,8 +11,8 @@ public:
         _weight = weight;
     }
 
-    T GetSourceNode() { return * _sourceNode; }
-    T GetTargetNode() { return * _targetNode; }
+    T * GetSourceNode() { return _sourceNode; }
+    T * GetTargetNode() { return _targetNode; }
     int GetWeight() { return _weight; }
 
 protected:

@@ -4,7 +4,6 @@
 #include "DataStructures/Graph/Graph.h"
 #include "DataStructures/Graph/VisualGraph/VisualGraph.h"
 
-// using namespace sf;
 using namespace std;
 
 void threadxx(VisualGraph g)
@@ -46,10 +45,17 @@ int main()
         {
             for (int j = 0; j < graph.GetNodes()[i].GetOutDegree(); j++)
             {
-                window.draw(graph.GetAdjLinkList()[i].ValueAt(j).GetLine(), 2, Lines);
+                window.draw(graph.GetAdjLinkList()[i].ValueAt(j)->GetLine(), 2, Lines);
 
-                window.draw(graph.GetAdjLinkList()[i].ValueAt(j).GetShape());
+                window.draw(graph.GetAdjLinkList()[i].ValueAt(j)->GetArrow());
             }
+        }
+
+        for (int i = 0; i < graph.TraverseOrder->Size(); i++)
+        {
+            window.draw(graph.TraverseOrder->ValueAt(i).GetLine(), 2, Lines);
+
+            window.draw(graph.TraverseOrder->ValueAt(i).GetArrow());
         }
 
         for (int i = 0; i < graph.GetNodeCount(); i++)

@@ -13,25 +13,30 @@ template<class T1 = GraphNode, class T2 = GraphEdge<GraphNode>>
 class Graph
 {
     public:
-        Graph() { }
         Graph(int nodeCount);
 
-        int GetNodeCount() { return _nodeCount; }
+        Graph()
+        {
+
+        }
 
         T1 * GetNodes() { return _nodes; }
 
-        LinkedList<T2> * GetAdjLinkList() { return _adjLinkList; }
+        int GetNodeCount() { return _nodeCount; }
 
-        LinkedList<T2> DFS();
+        LinkedList<T2* > * GetAdjLinkList() { return _adjLinkList; }
+
+        LinkedList<T2 *> DFS();
 
         bool BFS(int startingIndex, int targetIndex);
 
 
     protected:
         int _nodeCount;
+
         T1 * _nodes;
 
-        LinkedList<T2> * _adjLinkList;
+        LinkedList<T2 *> * _adjLinkList;
 };
 
 template<class T1, class T2>
@@ -41,12 +46,12 @@ Graph<T1, T2>::Graph(int nodeCount)
 }
 
 template<class T1, class T2>
-LinkedList<T2> Graph<T1, T2>::DFS()
+LinkedList<T2 *> Graph<T1, T2>::DFS()
 {
     int parents[_nodeCount];
     bool isVisited[_nodeCount];
     LinkedList<int> * nodeStack = new LinkedList<int>();
-    LinkedList<T2> traversalOrder = LinkedList<T2>();
+    LinkedList<T2 *> traversalOrder = LinkedList<T2 *>();
 
     parents[0] = -1;
 
@@ -65,7 +70,7 @@ LinkedList<T2> Graph<T1, T2>::DFS()
                 {
                     for (int k = 0; k < _nodes[parent].GetOutDegree(); k++)
                     {
-                        if (_adjLinkList[parent].ValueAt(k).GetTargetNode().GetIndex() == curIndex)
+                        if (_adjLinkList[parent].ValueAt(k)->GetTargetNode()->GetIndex() == curIndex)
                         {
                             traversalOrder.PushBack(_adjLinkList[parent].ValueAt(k));
                         }
@@ -76,7 +81,7 @@ LinkedList<T2> Graph<T1, T2>::DFS()
 
                 for (int j = 0; j < _nodes[curIndex].GetOutDegree(); j++)
                 {
-                    int targetIndex = _adjLinkList[curIndex].ValueAt(j).GetTargetNode().GetIndex();
+                    int targetIndex = _adjLinkList[curIndex].ValueAt(j)->GetTargetNode()->GetIndex();
 
                     parents[targetIndex] = curIndex;
 

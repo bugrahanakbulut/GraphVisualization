@@ -1,41 +1,54 @@
 class VisualGraphEdge : public GraphEdge<VisualGraphNode>
 {
 public:
-    VisualGraphEdge() {  };
+    VisualGraphEdge()
+    {
+
+    }
+
     VisualGraphEdge(
             VisualGraphNode * sourceNode,
             VisualGraphNode * targetNode,
             Color edgeColor,
-            int weight = 1) :
-            GraphEdge<VisualGraphNode>(sourceNode, targetNode, weight)
+            int weight = 1) : GraphEdge<VisualGraphNode>(sourceNode, targetNode, weight)
     {
         _line = (Vertex *) calloc(sizeof(Vertex), 2);
 
-        _line[0] = Vertex(_sourceNode->GetPosition(), _sourceNode->GetColor());
-        _line[1] = Vertex(_targetNode->GetPosition(), _targetNode->GetColor());
+        _edgeColor = edgeColor;
+
+        _line[0] = Vertex(_sourceNode->GetPosition(), _edgeColor);
+        _line[1] = Vertex(_targetNode->GetPosition(), _edgeColor);
 
         InitArrow();
     }
 
     Vertex * GetLine()
     {
-        _line[0] = Vertex(_sourceNode->GetPosition(), _sourceNode->GetColor());
-        _line[1] = Vertex(_targetNode->GetPosition(), _targetNode->GetColor());
+        _line[0] = Vertex(_sourceNode->GetPosition(), _edgeColor);
+        _line[1] = Vertex(_targetNode->GetPosition(), _edgeColor);
 
         return _line;
     }
 
-    ConvexShape GetShape()
+    ConvexShape GetArrow()
     {
         InitArrow();
 
         return _directionArrow;
     }
 
+    void SetColor (Color c)
+    {
+        _edgeColor = c;
+
+        InitArrow();
+    }
+
 private:
     Vertex * _line;
-    ConvexShape _directionArrow;
+    Color _edgeColor;
     float _arrowLen = 15;
+    ConvexShape _directionArrow;
 
     void InitArrow()
     {
@@ -53,7 +66,7 @@ private:
         float angle = (atan2 (dir.y, dir.x) * 180 / 3.14) - 90;
 
         _directionArrow.setRotation(angle);
-        _directionArrow.setFillColor(_targetNode->GetColor());
+        _directionArrow.setFillColor(_edgeColor);
     }
 
 };

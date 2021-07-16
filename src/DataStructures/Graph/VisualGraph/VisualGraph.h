@@ -12,6 +12,8 @@ class VisualGraph : public Graph<VisualGraphNode, VisualGraphEdge>
 
         void VisualDFS();
 
+        LinkedList<VisualGraphEdge> * TraverseOrder;
+
     private:
         Color * _visualColorPalette;
 
@@ -20,19 +22,21 @@ class VisualGraph : public Graph<VisualGraphNode, VisualGraphEdge>
 
 VisualGraph::VisualGraph(int nodeCount, int windowWidth, int windowHeight)
 {
+    TraverseOrder = new LinkedList<VisualGraphEdge>;
+
     _nodeCount = nodeCount;
 
     InitColorPalette();
 
     _nodes = (VisualGraphNode *) calloc(sizeof(VisualGraphNode), nodeCount);
 
-    _adjLinkList = (LinkedList<VisualGraphEdge> *) calloc(sizeof(LinkedList<VisualGraphEdge>), nodeCount);
+    _adjLinkList = (LinkedList<VisualGraphEdge *> *) calloc(sizeof(LinkedList<VisualGraphEdge *>), nodeCount);
 
     for (int i = 0; i < nodeCount; i++)
     {
         _nodes[i] = VisualGraphNode(i, 0, Constants::GET_NODE_COLOR(), Utils::GetRandomVector2(windowWidth, windowHeight));
 
-        _adjLinkList[i] = LinkedList<VisualGraphEdge>();
+        _adjLinkList[i] = LinkedList<VisualGraphEdge *>();
     }
 
     for (int i = 0; i < nodeCount; i++)
@@ -52,10 +56,10 @@ VisualGraph::VisualGraph(int nodeCount, int windowWidth, int windowHeight)
             {
                 _nodes[i].SetOutDegree(_nodes[i].GetOutDegree() + 1);
 
-                VisualGraphEdge edge(
-                        &_nodes[i],
-                        &_nodes[j],
-                        Constants::GET_EDGE_COLOR());
+                VisualGraphEdge * edge = new VisualGraphEdge(
+                                            &_nodes[i],
+                                            &_nodes[j],
+                                            Constants::GET_EDGE_COLOR());
 
                 _adjLinkList[i].PushBack(edge);
 
@@ -67,75 +71,22 @@ VisualGraph::VisualGraph(int nodeCount, int windowWidth, int windowHeight)
 
 void VisualGraph::VisualDFS()
 {
-    /*LinkedList<int> * nodeStack  = new LinkedList<int>;
-
-    bool isVisited[_nodeCount];
-    int parents[_nodeCount];
-    int levels[_nodeCount];
-
-    for (int i = 0; i < _nodeCount; i++)
-    {
-        isVisited[i] = false;
-        parents[i] = 0;
-        levels[i] = 0;
-    }
-
-    levels[0] = 0;
-    parents[0] = -1;
-    nodeStack->PushFront(0);
-
-    while (!nodeStack->IsEmpty())
-    {
-        int index = nodeStack->PopFront();
-
-        isVisited[index] = true;
-
-        if (parents[index] != -1)
-            levels[index] = levels[parents[index]] + 1;
-
-        _nodes[index].SetColor(_visualColorPalette[levels[index]]);
-
-        // cout << "Node Id :" << index << " Level :" << levels[index] << "\n";
-
-        for (int i = 0; i < _adjLinkList[index].Size(); i++)
-        {
-            int targetNode = _adjLinkList[index].ValueAt(i).GetTargetNode().GetIndex();
-
-            if (!isVisited[targetNode])
-            {
-                parents[targetNode] = index;
-
-                nodeStack->PushFront(targetNode);
-            }
-        }
-    }*/
-
     Sleep(500);
 
-    LinkedList<VisualGraphEdge> traversalOrder = DFS();
+    LinkedList<VisualGraphEdge *> traversalOrder = DFS();
 
     for (int i = 0; i < traversalOrder.Size(); i++)
     {
-        int source = traversalOrder.ValueAt(i).GetSourceNode().GetIndex();
-        int target = traversalOrder.ValueAt(i).GetTargetNode().GetIndex();
+        traversalOrder.ValueAt(i)->SetColor(Color::Red);
 
+        cout << "Source Node : " << traversalOrder.ValueAt(i)->GetSourceNode()->GetIndex() << " ->" <<
 
-        for (int i = 0; i < _nodes[source].GetOutDegree(); i++)
-        {
-            if (_adjLinkList[source].ValueAt(i).GetTargetNode().GetIndex() == target)
-            {
-                // _adjLinkList[source].ValueAt(i).GetSourceNode().SetColor(Color::Red);
+        "Target Node : " << traversalOrder.ValueAt(i)->GetTargetNode()->GetIndex() << "\n";
 
-                _nodes[source].SetColor(Color::Red);
-                _nodes[target].SetColor(Color::Red);
-
-                cout << source << " -- " << target << " ";
-            }
-        }
+        TraverseOrder->PushBack(*(traversalOrder.ValueAt(i)));
 
         Sleep(500);
     }
-
 }
 
 
