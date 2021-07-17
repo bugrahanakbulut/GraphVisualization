@@ -14,6 +14,8 @@ class VisualGraph : public Graph<VisualGraphNode, VisualGraphEdge>
 
         void VisualBFS();
 
+        void VisualShortestPath(int source, int target);
+
         LinkedList<VisualGraphEdge> * TraverseOrder;
 
     private:
@@ -110,6 +112,24 @@ void VisualGraph::VisualBFS()
         TraverseOrder->PushBack(*(traversalOrder.ValueAt(i)));
 
         Sleep(500);
+    }
+}
+
+void VisualGraph::VisualShortestPath(int source, int target)
+{
+    LinkedList<VisualGraphEdge *> path = ShortestPath(source, target);
+
+    TraverseOrder->Clear();
+
+    Sleep(1000);
+
+    for (int i = 0; i < path.Size(); i++)
+    {
+        path.ValueAt(i)->SetColor(Color::Red);
+
+        TraverseOrder->PushBack(*(path.ValueAt(i)));
+
+        Sleep(1000);
     }
 }
 

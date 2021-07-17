@@ -30,6 +30,8 @@ class Graph
 
         LinkedList<T2 *> BFS();
 
+        LinkedList<T2 *> ShortestPath(int source, int target);
+
 
     protected:
         int _nodeCount;
@@ -129,4 +131,92 @@ LinkedList<T2 *> Graph<T1, T2>::BFS()
     }
 
     return traverseOrder;
+}
+
+template<class T1, class T2>
+LinkedList<T2 *> Graph<T1, T2>::ShortestPath(int source, int target)
+{
+    Queue<int> nodeQueue;
+
+    bool isVisited[_nodeCount];
+    int distances[_nodeCount];
+    int parents[_nodeCount];
+
+    for (int i = 0; i < _nodeCount; i++)
+    {
+        isVisited[i] = false;
+        distances[i] = INT_MAX;
+        parents[i] = -1;
+    }
+
+    isVisited[source] = true;
+    distances[source] = 0;
+    parents[source] = -1;
+
+    nodeQueue.Enqueue(source);
+
+    while (!nodeQueue.IsEmpty())
+    {
+        int curIndex = nodeQueue.Dequeue();
+
+        isVisited[curIndex] = true;
+
+        for (int i = 0; i < _adjLinkList[curIndex].Size(); i++)
+        {
+            int w = _adjLinkList[curIndex].ValueAt(i)->GetWeight();
+            int targetIndex = _adjLinkList[curIndex].ValueAt(i)->GetTargetNode()->GetIndex();
+
+            if (distances[targetIndex] > distances[curIndex] + w)
+            {
+                distances[targetIndex] = distances[curIndex] + w;
+                parents[targetIndex] = curIndex;
+
+                // cout << "Path Updated " << curIndex << " -> " << targetIndex << " Distance : " << distances[targetIndex] << "\n";
+            }
+
+            if (!isVisited[targetIndex])
+            {
+                nodeQueue.Enqueue(targetIndex);
+            }
+        }
+    }
+
+    LinkedList<T2 *> path;
+
+    if (parents[target] == -1)
+    {
+        return path;
+    }
+
+    LinkedList<int> traverseOrder;
+
+    int curParent = parents[target];
+    traverseOrder.PushFront(target);
+    traverseOrder.PushFront(curParent);
+
+    while (curParent != -1)
+    {
+        curParent = parents[curParent];
+
+        traverseOrder.PushFront(curParent);
+    }
+
+    for (int i = 0; i < traverseOrder.Size() - 1; i++)
+    {
+        int curNode = traverseOrder.ValueAt(i);
+
+        int nextNode = traverseOrder.ValueAt(i + 1);
+
+        for (int j = 0; j < _adjLinkList[curNode].Size(); j++)
+        {
+            if (_adjLinkList[curNode].ValueAt(j)->GetTargetNode()->GetIndex() == nextNode)
+            {
+                path.PushBack(_adjLinkList[curNode].ValueAt(j));
+
+                cout << "Edge Added Path " << curNode << " -> " << nextNode << "\n";
+            }
+        }
+    }
+
+    return path;
 }
