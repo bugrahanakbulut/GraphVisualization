@@ -1,6 +1,10 @@
 # GraphVisualization
-Visualization of basic graph algorithms such as DFS, BFS, Djikstra's Shortest Path, Cycle Detection etc.
+Visualization of basic graph algorithms such as DFS, BFS, Djikstra's Shortest Path, Cycle Detection etc. To render visuals used SFML with C++.
+
+
 Visualization of DFS : 
+
+
 ![Alt Text](https://media.giphy.com/media/ctL37LSt1ySo5LFvPQ/giphy.gif)
 
 
