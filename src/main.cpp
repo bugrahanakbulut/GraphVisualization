@@ -8,7 +8,7 @@ using namespace std;
 
 void GraphThread(VisualGraph g)
 {
-    g.VisualizeCyclicEdges();
+    g.VisualDFS();
 }
 
 int main()
