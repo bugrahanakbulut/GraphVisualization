@@ -5,20 +5,14 @@ template <class T>
 class Array
 {
     private:
-        T* _elements;
+        T * _elements;
         int _size;
 
     public:
-        explicit Array<T>(int size)
+        Array<T>()
         {
-            if (size < 0)
-            {
-                throw std::runtime_error(" Size can not be negative.");
-            }
-
-            _size = size;
-
-            _elements = new T[size];
+            _size = 0;
+            _elements = new T[0];
         }
 
         ~Array()
@@ -27,20 +21,15 @@ class Array
         }
 
         int Size();
-
-        bool IsEmpty();
-
-        T At(int index);
-
-        void Insert(T elem);
-
-        void Insert(T elem, int index);
-
-        T Remove(T elem);
-
         int FindItem(T elem);
-
+        bool IsEmpty();
+        T ValueAt(int index);
+        void Remove(T elem);
+        void RemoveAt(int index);
+        void Insert(T elem);
+        void Insert(T elem, int index);
         void Resize(int newCapacity);
+        void Set(int index, T elem);
 };
 
 template<typename T>
@@ -56,7 +45,7 @@ bool Array<T>::IsEmpty()
 }
 
 template<typename T>
-T Array<T>::At(int index)
+T Array<T>::ValueAt(int index)
 {
     if (index < 0)
     {
@@ -108,7 +97,7 @@ void Array<T>::Insert(T elem, int index)
 }
 
 template<typename T>
-T Array<T>::Remove(T elem)
+void Array<T>::Remove(T elem)
 {
     int elemIndex = FindItem(elem);
 
@@ -117,16 +106,23 @@ T Array<T>::Remove(T elem)
         throw std::runtime_error("Array does not containing specified element.");
     }
 
-    T deleted = _elements[elemIndex];
-
     for (int j = elemIndex; j < _size - 1; j++)
     {
         _elements[j] = _elements[j + 1];
     }
 
     Resize(Size() - 1);
+}
 
-    return deleted;
+template<class T>
+void Array<T>::RemoveAt(int index)
+{
+    for (int j = index; j < _size - 1; j++)
+    {
+        _elements[j] = _elements[j + 1];
+    }
+
+    Resize(Size() - 1);
 }
 
 template<typename T>
@@ -153,7 +149,7 @@ void Array<T>::Resize(int newCapacity)
 
     _size = newCapacity;
 
-    T* newList = new T[_size];
+    T * newList = new T[_size];
 
     for (int i = 0; i < _size; i++)
     {
@@ -163,4 +159,10 @@ void Array<T>::Resize(int newCapacity)
     delete _elements;
 
     _elements = newList;
+}
+
+template<typename T>
+void Array<T>::Set(int index, T elem)
+{
+    _elements[index] = elem;
 }

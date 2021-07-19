@@ -32,6 +32,8 @@ class Graph
 
         LinkedList<T2 *> ShortestPath(int source, int target);
 
+        LinkedList<T2 *> DetermineCycles();
+
 
     protected:
         int _nodeCount;
@@ -55,6 +57,12 @@ LinkedList<T2 *> Graph<T1, T2>::DFS()
     LinkedList<int> * nodeStack = new LinkedList<int>();
     LinkedList<T2 *> traversalOrder = LinkedList<T2 *>();
 
+    for (int i = 0; i < _nodeCount; i++)
+    {
+        parents[i] = -1;
+        isVisited[i] = false;
+    }
+
     parents[0] = -1;
 
     for (int i = 0; i < _nodeCount; i++)
@@ -67,21 +75,20 @@ LinkedList<T2 *> Graph<T1, T2>::DFS()
 
             if (!isVisited[curIndex])
             {
-                int parent = parents[curIndex];
-                if (parent != -1)
+                isVisited[curIndex] = true;
+
+                if (parents[curIndex] != -1)
                 {
-                    for (int k = 0; k < _nodes[parent].GetOutDegree(); k++)
+                    for (int edgeInd = 0; edgeInd < _adjLinkList[parents[curIndex]].Size(); edgeInd++)
                     {
-                        if (_adjLinkList[parent].ValueAt(k)->GetTargetNode()->GetIndex() == curIndex)
+                        if (_adjLinkList[parents[curIndex]].ValueAt(edgeInd)->GetTargetNode()->GetIndex() == curIndex)
                         {
-                            traversalOrder.PushBack(_adjLinkList[parent].ValueAt(k));
+                            traversalOrder.PushBack(_adjLinkList[parents[curIndex]].ValueAt(edgeInd));
                         }
                     }
                 }
 
-                isVisited[curIndex] = true;
-
-                for (int j = 0; j < _nodes[curIndex].GetOutDegree(); j++)
+                for (int j = _nodes[curIndex].GetOutDegree() - 1; j >=0; j--)
                 {
                     int targetIndex = _adjLinkList[curIndex].ValueAt(j)->GetTargetNode()->GetIndex();
 
@@ -219,4 +226,75 @@ LinkedList<T2 *> Graph<T1, T2>::ShortestPath(int source, int target)
     }
 
     return path;
+}
+
+template<class T1, class T2>
+LinkedList<T2 *> Graph<T1, T2>::DetermineCycles()
+{
+    int parents[_nodeCount];
+    bool isVisited[_nodeCount];
+    LinkedList<int> nodeStack;
+    LinkedList<T2 *> cyclicEdges;
+
+    for (int i = 0; i < _nodeCount; i++)
+    {
+        parents[i] = -1;
+        isVisited[i] = false;
+    }
+
+    for (int i = 0; i < _nodeCount; i++)
+    {
+        nodeStack.PushFront(i);
+
+        while (!nodeStack.IsEmpty())
+        {
+            int curIndex = nodeStack.PopFront();
+
+            if (isVisited[curIndex])
+            {
+                continue;
+            }
+
+            isVisited[curIndex] = true;
+
+            for (int j = _adjLinkList[curIndex].Size() - 1; j >= 0; j--)
+            {
+                int targetIndex = _adjLinkList[curIndex].ValueAt(j)->GetTargetNode()->GetIndex();
+
+                if (!isVisited[targetIndex])
+                {
+                    parents[targetIndex] = curIndex;
+
+                    nodeStack.PushFront(targetIndex);
+                }
+                else
+                {
+                    int parent = parents[curIndex];
+
+                    bool isBackEdge = false;
+
+                    while (parent != -1 && !isBackEdge)
+                    {
+                        if (parent == targetIndex)
+                        {
+                            isBackEdge = true;
+
+                            continue;
+                        }
+
+                        parent = parents[parent];
+                    }
+
+                    if (isBackEdge)
+                    {
+                        cyclicEdges.PushBack(_adjLinkList[curIndex].ValueAt(j));
+
+                        cout << "Cyclic Edge Detected : " << curIndex << " -> " << targetIndex << "\n";
+                    }
+                }
+            }
+        }
+    }
+
+    return cyclicEdges;
 }

@@ -16,7 +16,9 @@ class VisualGraph : public Graph<VisualGraphNode, VisualGraphEdge>
 
         void VisualShortestPath(int source, int target);
 
-        LinkedList<VisualGraphEdge> * TraverseOrder;
+        void VisualizeCyclicEdges();
+
+        LinkedList<VisualGraphEdge> * VisualizedEdges;
 
     private:
         Color * _visualColorPalette;
@@ -26,7 +28,7 @@ class VisualGraph : public Graph<VisualGraphNode, VisualGraphEdge>
 
 VisualGraph::VisualGraph(int nodeCount, int windowWidth, int windowHeight)
 {
-    TraverseOrder = new LinkedList<VisualGraphEdge>;
+    VisualizedEdges = new LinkedList<VisualGraphEdge>;
 
     _nodeCount = nodeCount;
 
@@ -75,7 +77,7 @@ VisualGraph::VisualGraph(int nodeCount, int windowWidth, int windowHeight)
 
 void VisualGraph::VisualDFS()
 {
-    TraverseOrder->Clear();
+    VisualizedEdges->Clear();
 
     Sleep(500);
 
@@ -85,10 +87,10 @@ void VisualGraph::VisualDFS()
     {
         traversalOrder.ValueAt(i)->SetColor(Color::Red);
 
-        cout << "Source Node : " << traversalOrder.ValueAt(i)->GetSourceNode()->GetIndex() << " ->" <<
+        cout << "Source Node : " << traversalOrder.ValueAt(i)->GetSourceNode()->GetIndex() << " -> " <<
         "Target Node : " << traversalOrder.ValueAt(i)->GetTargetNode()->GetIndex() << "\n";
 
-        TraverseOrder->PushBack(*(traversalOrder.ValueAt(i)));
+        VisualizedEdges->PushBack(*(traversalOrder.ValueAt(i)));
 
         Sleep(500);
     }
@@ -96,7 +98,7 @@ void VisualGraph::VisualDFS()
 
 void VisualGraph::VisualBFS()
 {
-    TraverseOrder->Clear();
+    VisualizedEdges->Clear();
 
     Sleep(500);
 
@@ -109,7 +111,7 @@ void VisualGraph::VisualBFS()
         cout << "Source Node : " << traversalOrder.ValueAt(i)->GetSourceNode()->GetIndex() << " ->" <<
          "Target Node : " << traversalOrder.ValueAt(i)->GetTargetNode()->GetIndex() << "\n";
 
-        TraverseOrder->PushBack(*(traversalOrder.ValueAt(i)));
+        VisualizedEdges->PushBack(*(traversalOrder.ValueAt(i)));
 
         Sleep(500);
     }
@@ -119,7 +121,7 @@ void VisualGraph::VisualShortestPath(int source, int target)
 {
     LinkedList<VisualGraphEdge *> path = ShortestPath(source, target);
 
-    TraverseOrder->Clear();
+    VisualizedEdges->Clear();
 
     Sleep(1000);
 
@@ -127,7 +129,23 @@ void VisualGraph::VisualShortestPath(int source, int target)
     {
         path.ValueAt(i)->SetColor(Color::Red);
 
-        TraverseOrder->PushBack(*(path.ValueAt(i)));
+        VisualizedEdges->PushBack(*(path.ValueAt(i)));
+
+        Sleep(1000);
+    }
+}
+
+void VisualGraph::VisualizeCyclicEdges()
+{
+    LinkedList<VisualGraphEdge *> cyclicEdges = DetermineCycles();
+
+    Sleep(1000);
+
+    for (int i = 0; i < cyclicEdges.Size(); i++)
+    {
+        cyclicEdges.ValueAt(i)->SetColor(Color::Red);
+
+        VisualizedEdges->PushBack(*(cyclicEdges.ValueAt(i)));
 
         Sleep(1000);
     }
@@ -146,3 +164,5 @@ void VisualGraph::InitColorPalette()
         _visualColorPalette[i] = Color(r, g, b, 255);
     }
 }
+
+

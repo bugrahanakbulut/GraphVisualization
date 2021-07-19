@@ -104,6 +104,9 @@
 		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Graph/VisualGraph/VisualGraphNode.h">
 			<Option target="GraphVisualization"/>
 		</Unit>
+		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/DataStructures/Heap/MinHeap.h">
+			<Option target="GraphVisualization"/>
+		</Unit>
 		<Unit filename="C:/Users/akbul/Desktop/workspace/Cpp/GraphVisualization/src/Utils/Constants.h">
 			<Option target="GraphVisualization"/>
 		</Unit>

@@ -6,9 +6,9 @@
 
 using namespace std;
 
-void threadxx(VisualGraph g)
+void GraphThread(VisualGraph g)
 {
-    g.VisualShortestPath(0, 2);
+    g.VisualizeCyclicEdges();
 }
 
 int main()
@@ -19,7 +19,7 @@ int main()
 
     VisualGraph graph(10, 1500, 800);
 
-    std::thread t (threadxx, graph);
+    std::thread t (GraphThread, graph);
 
     RenderWindow window(VideoMode(1600, 900), "Graph Visualization");
 
@@ -51,11 +51,11 @@ int main()
             }
         }
 
-        for (int i = 0; i < graph.TraverseOrder->Size(); i++)
+        for (int i = 0; i < graph.VisualizedEdges->Size(); i++)
         {
-            window.draw(graph.TraverseOrder->ValueAt(i).GetLine(), 2, Lines);
+            window.draw(graph.VisualizedEdges->ValueAt(i).GetLine(), 2, Lines);
 
-            window.draw(graph.TraverseOrder->ValueAt(i).GetArrow());
+            window.draw(graph.VisualizedEdges->ValueAt(i).GetArrow());
         }
 
         for (int i = 0; i < graph.GetNodeCount(); i++)
@@ -74,4 +74,5 @@ int main()
 
         window.display();
     }
+
 }

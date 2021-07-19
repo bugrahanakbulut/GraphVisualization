@@ -3,7 +3,7 @@ project(GraphVisualization)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(GraphVisualization src/main.cpp src/DataStructures/Graph/Graph.h src/Utils/Utils.h src/Utils/Constants.h src/DataStructures/Graph/VisualGraph/VisualGraph.h src/Utils/Resources.h src/DataStructures/Graph/GraphEdge.h src/DataStructures/Graph/GraphNode.h src/DataStructures/Graph/VisualGraph/VisualGraphNode.h src/DataStructures/Graph/VisualGraph/VisualGraphEdge.h)
+add_executable(GraphVisualization src/main.cpp src/DataStructures/Graph/Graph.h src/Utils/Utils.h src/Utils/Constants.h src/DataStructures/Graph/VisualGraph/VisualGraph.h src/Utils/Resources.h src/DataStructures/Graph/GraphEdge.h src/DataStructures/Graph/GraphNode.h src/DataStructures/Graph/VisualGraph/VisualGraphNode.h src/DataStructures/Graph/VisualGraph/VisualGraphEdge.h src/DataStructures/Heap/MinHeap.h)
 
 include_directories(headers c:/SFML/include)
 
