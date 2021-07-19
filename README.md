@@ -1,7 +1,7 @@
 # GraphVisualization
 Visualization of basic graph algorithms such as DFS, BFS, Djikstra's Shortest Path, Cycle Detection etc.
 Visualization of DFS : 
-![Alt Text](https://media.giphy.com/media/L0lq4jWbal6oSsFesS/giphy.gif)
+![Alt Text](https://media.giphy.com/media/ctL37LSt1ySo5LFvPQ/giphy.gif)
 
 
 ## Contact & Some Additional Notes
